@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	public float speed;
-	private Rigidbody2D playerRigidbody;
-	private Vector3 change;
-	private Animator playerAnimator;
+    public float speed;
+    private Rigidbody2D playerRigidbody;
+    private Vector3 change;
+    private Animator playerAnimator;
 
-	void Start ()
-	{
-		playerRigidbody = GetComponent<Rigidbody2D> ();
-		playerAnimator = GetComponent<Animator> ();
-	}
+    void Start ()
+    {
+        playerRigidbody = GetComponent<Rigidbody2D> ();
+        playerAnimator = GetComponent<Animator> ();
+    }
 
-	void Update ()
-	{
-		change = Vector3.zero;
-		change.x = Input.GetAxisRaw ("Horizontal");
-		change.y = Input.GetAxisRaw ("Vertical");
+    void Update ()
+    {
+        change = Vector3.zero;
+        change.x = Input.GetAxisRaw ("Horizontal");
+        change.y = Input.GetAxisRaw ("Vertical");
 
-		if (change != Vector3.zero)
-		{
-			playerRigidbody.MovePosition (transform.position + change * speed * Time.deltaTime);
-			playerAnimator.SetFloat ("moveX", change.x);
-			playerAnimator.SetBool ("isWalking", true);
-		}
-		else
-		{
-			playerAnimator.SetBool ("isWalking", false);
-		}
-	}
+        if (change != Vector3.zero)
+        {
+            playerRigidbody.MovePosition (transform.position + change * speed * Time.deltaTime);
+            playerAnimator.SetFloat ("moveX", change.x);
+            playerAnimator.SetBool ("isWalking", true);
+        }
+        else
+        {
+            playerAnimator.SetBool ("isWalking", false);
+        }
+    }
 }
