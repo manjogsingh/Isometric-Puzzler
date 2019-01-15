@@ -48,12 +48,14 @@ public class PlayerMovement : MonoBehaviour
     void Update ()
     {
         change = Vector3.zero;
+
         change.x = Input.GetAxisRaw ("Horizontal");
         change.y = Input.GetAxisRaw ("Vertical");
 
         if (change != Vector3.zero)
         {
             playerRigidbody.MovePosition (transform.position + change * speed * Time.deltaTime);
+
             playerAnimator.SetFloat ("moveX", change.x);
             playerAnimator.SetBool ("isWalking", true);
         }
