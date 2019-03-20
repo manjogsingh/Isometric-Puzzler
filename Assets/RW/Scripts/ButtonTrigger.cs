@@ -34,29 +34,34 @@ using UnityEngine;
 
 public class ButtonTrigger : MonoBehaviour
 {
+	// 1
 	public GameObject door;
-    public GameObject message;
-    Animator buttonAnimator;
-    Animator doorAnimator;
-    Collider2D doorCollider;
-    void Start ()
-    {
-        buttonAnimator = GetComponent<Animator> ();
-        doorAnimator = door.GetComponent<Animator> ();
-        doorCollider = door.GetComponent<Collider2D> ();
-    }
-    void OnTriggerEnter2D (Collider2D other)
-    {
+	public GameObject message;
+	// 2
+	Animator buttonAnimator;
+	Animator doorAnimator;
+	// 3
+	Collider2D doorCollider;
+	void Start ()
+	{
+		// 4
+		buttonAnimator = GetComponent<Animator> ();
+		doorAnimator = door.GetComponent<Animator> ();
+		doorCollider = door.GetComponent<Collider2D> ();
+	}
+	void OnTriggerEnter2D (Collider2D other)
+	{
 
-        if (transform.name.Equals ("Button 3"))
-        {
-            message.SetActive (true);
-        }
-        if (other.tag.Equals ("Player"))
-        {
-            buttonAnimator.SetBool ("press", true);
-            doorAnimator.SetBool ("open", true);
-            doorCollider.enabled = false;
-        }
-    }
+		if (transform.name.Equals ("Button 3"))
+		{
+			message.SetActive (true);
+		}
+		// 5
+		if (other.tag.Equals ("Player"))
+		{
+			buttonAnimator.SetBool ("press", true);
+			doorAnimator.SetBool ("open", true);
+			doorCollider.enabled = false;
+		}
+	}
 }
